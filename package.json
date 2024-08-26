@@ -11,7 +11,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -38,5 +38,14 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://sked.lin.hs-osnabrueck.de"
+  "proxy": "https://sked.lin.hs-osnabrueck.de",
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  },
+  "homepage": "https://fwallmeier.github.io/HsOsnabrueckFilterICS",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build"
+  }
 }
