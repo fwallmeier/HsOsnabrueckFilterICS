@@ -1,0 +1,49 @@
+/* Welcome.css */
+
+.welcome-container {
+    text-align: center;
+    padding: 50px;
+    background-color: #f4f4f4;
+}
+
+.hs-logo {
+    width: 500px; /* Die Breite des Logos */
+    height: auto; /* Automatische Höhe, um das Seitenverhältnis beizubehalten */
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.get-started-btn {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: None;
+}
+
+.get-started-btn:hover {
+    background-color: #0056b3;
+}/* Welcome.css */
+
+.welcome-container {
+    text-align: center;
+    padding: 50px;
+    background-color: #f4f4f4;
+}
