@@ -18,7 +18,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -38,14 +40,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://sked.lin.hs-osnabrueck.de",
   "devDependencies": {
     "gh-pages": "^6.1.1"
   },
-  "homepage": "https://fwallmeier.github.io/HsOsnabrueckFilterICS",
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "build": "react-scripts build"
-  }
+  "homepage": "https://fwallmeier.github.io/HsOsnabrueckFilterICS"
 }

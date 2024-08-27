@@ -11,7 +11,8 @@ function EventFilterPage() {
 
     const handleLoadICS = async () => {
         try {
-            const response = await axios.get(icsLink)
+            const proxyURL = `https://corsproxy.io/?${icsLink}`;
+            const response = await axios.get(proxyURL)
                 .catch(error => {
                     console.error('Error fetching ICS file:', error);
                 });
@@ -39,7 +40,7 @@ function EventFilterPage() {
     const handleGenerateFilterLink = () => {
         const jsonPayload = JSON.stringify({ events: selectedEvents });
         const encodedPayload = encodeURIComponent(jsonPayload);
-        const newFilterLink = `/filter/ics?filter=${encodedPayload}&icsUrl=${icsLink}`;
+        const newFilterLink = `/#/filter/ics?filter=${encodedPayload}&icsUrl=${icsLink}`;
         setFilterLink(newFilterLink);
     };
 

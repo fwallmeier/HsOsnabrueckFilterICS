@@ -32,7 +32,8 @@ function FilterICS() {
     const downloadICSFile = async () => {
         try {
             // Schritt 1: ICS-Datei vom Server herunterladen
-            const response = await axios.get(icsUrl);
+            const proxyURL = `https://corsproxy.io/?${icsUrl}`;
+            const response = await axios.get(proxyURL);
             const icsData = response.data;
 
             // Schritt 2: ICS-Datei parsen
