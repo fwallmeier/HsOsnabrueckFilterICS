@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from "react-router-dom";
 import axios from 'axios';
 import ical from 'ical.js';
 import './EventFilterPage.css'
@@ -40,7 +41,7 @@ function EventFilterPage() {
     const handleGenerateFilterLink = () => {
         const jsonPayload = JSON.stringify({ events: selectedEvents });
         const encodedPayload = encodeURIComponent(jsonPayload);
-        const newFilterLink = `/#/filter/ics?filter=${encodedPayload}&icsUrl=${icsLink}`;
+        const newFilterLink = `/ics?filter=${encodedPayload}&icsUrl=${icsLink}`;
         setFilterLink(newFilterLink);
     };
 
@@ -76,9 +77,7 @@ function EventFilterPage() {
             {filterLink && (
                 <div>
                     <h3>Filtered ICS Link</h3>
-                    <a href={filterLink} target="_blank" rel="noopener noreferrer">
-                        {filterLink}
-                    </a>
+                    <Link to={filterLink} target="_blank" rel="noopener noreferrer"> Link To ICS file </Link>
                 </div>
             )}
         </div>

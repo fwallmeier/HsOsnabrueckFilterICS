@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ical from 'ical.js';
 import { useLocation } from 'react-router-dom';
 
 function FilterICS() {
     const location = useLocation();
-
-    // URL-Parameter parsen
     const queryParams = new URLSearchParams(location.search);
 
-    // JSON Payload extrahieren
     const filter = queryParams.get('filter');
     const icsUrl = queryParams.get('icsUrl');
 
-    // JSON Payload parsen (falls vorhanden)
     let filterData = {};
     if (filter) {
         try {
@@ -23,37 +19,27 @@ function FilterICS() {
         }
     }
 
-    // Debug: Anzeigen des gefilterten Events und der ICS-URL
-    console.log('Filter:', filterData['events']);
-    console.log('ICS URL:', icsUrl);
-
     const [filteredICS, setFilteredICS] = useState(null);
 
     const downloadICSFile = async () => {
         try {
-            // Schritt 1: ICS-Datei vom Server herunterladen
-            const proxyURL = `https://corsproxy.io/?${icsUrl}`;
+            const proxyURL = `https://corsproxy.io/?${icsUrl}`; // Ensure this URL is correctly set for your case
             const response = await axios.get(proxyURL);
             const icsData = response.data;
 
-            // Schritt 2: ICS-Datei parsen
             const jcalData = ical.parse(icsData);
             const comp = new ical.Component(jcalData);
             const events = comp.getAllSubcomponents('vevent');
 
-            // Schritt 3: Filter basierend auf dem HTTP Header (hier simuliert)
             const filteredEvents = events.filter(event => {
                 const summary = event.getFirstPropertyValue('summary');
-                return filterData['events'].includes(summary); // Filterkriterium
+                return filterData['events'] && filterData['events'].includes(summary);
             });
 
-            // Schritt 4: Neue ICS-Datei erstellen
             const newComp = new ical.Component(['vcalendar', [], []]);
-            for (let i = 0; i < filteredEvents.length; i++) {
-                newComp.addSubcomponent(filteredEvents[i]);
-            }
+            filteredEvents.forEach(event => newComp.addSubcomponent(event));
+
             const newICSData = newComp.toString();
-            // Gefilterte ICS-Datei setzen
             setFilteredICS(newICSData);
         } catch (error) {
             console.error('Error fetching ICS file:', error);
@@ -62,33 +48,20 @@ function FilterICS() {
 
     useEffect(() => {
         downloadICSFile();
-    }, []); // Der leere Abhängigkeits-Array sorgt dafür, dass der Effekt nur einmal beim Laden der Komponente ausgeführt wird
+    }, [icsUrl, filter]);
 
     useEffect(() => {
         if (filteredICS) {
-            // Ein unsichtbares <a>-Element erstellen
-            const element = document.createElement('a');
+            // Create a Blob URL for the ICS data
             const file = new Blob([filteredICS], { type: 'text/calendar;charset=utf-8' });
-            element.href = URL.createObjectURL(file);
-            element.download = "filtered_calendar.ics";
-            document.body.appendChild(element); // Das <a>-Element anhängen
-            element.click(); // Den Download programmatisch anstoßen
-            document.body.removeChild(element); // Das <a>-Element entfernen
+            const fileURL = URL.createObjectURL(file);
+
+            // Redirect to the Blob URL
+            window.location.href = fileURL;
         }
     }, [filteredICS]);
 
-    return (
-        <div>
-            {filteredICS && (
-                <a
-                    href={`data:text/calendar;charset=utf-8,${encodeURIComponent(filteredICS)}`}
-                    download="filtered_calendar.ics"
-                >
-                    Download Filtered ICS File
-                </a>
-            )}
-        </div>
-    );
+    return <p>Processing...</p>;
 }
 
 export default FilterICS;
