@@ -1,8 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
-import WelcomePage from './WelcomePage';
-import EventFilterPage from './EventFilterPage';
-import FilterICS from "./FilterICS";
+import WelcomePage from './components/WelcomePage';
+import EventFilterPage from './components/EventFilterPage';
 
 function App() {
   return (
@@ -10,7 +9,6 @@ function App() {
         <Routes>
           <Route path="/" element={<WelcomePage />} />
           <Route path="/filter" element={<EventFilterPage />} />
-          <Route path="/ics" element={<FilterICS />} />
         </Routes>
       </Router>
   );

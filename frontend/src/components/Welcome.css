@@ -10,6 +10,10 @@
     width: 500px; /* Die Breite des Logos */
     height: auto; /* Automatische Höhe, um das Seitenverhältnis beizubehalten */
     margin-bottom: 20px;
+    position: relative;
+    display: inline;
+    align-self: center;
+
 }
 
 h1 {
@@ -41,9 +45,3 @@ p {
 .get-started-btn:hover {
     background-color: #0056b3;
 }/* Welcome.css */
-
-.welcome-container {
-    text-align: center;
-    padding: 50px;
-    background-color: #f4f4f4;
-}

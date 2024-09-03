@@ -11,6 +11,14 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for a raised effect */
 }
 
+.calender{
+    max-width: 100%;
+    padding: 5px;
+    margin: 20px;
+    border: #007BFF 3px solid;
+    border-radius: 5px;
+}
+
 /* Header Styling */
 h1, h2, h3 {
     color: #333; /* Dark text color for contrast */
@@ -36,12 +44,15 @@ h3 {
 input[type="text"] {
     width: 80%;
     padding: 10px;
-    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1em;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 20px;
+}
+
+div{
+    align-items: center;
 }
 
 button {

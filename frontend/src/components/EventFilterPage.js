@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import axios from 'axios';
 import ical from 'ical.js';
 import './EventFilterPage.css'
+import CalenderIframe from "./CalenderIframe";
 
 function EventFilterPage() {
     const [icsLink, setIcsLink] = useState('');
@@ -13,22 +14,29 @@ function EventFilterPage() {
     const handleLoadICS = async () => {
         try {
             const proxyURL = `https://corsproxy.io/?${icsLink}`;
-            const response = await axios.get(proxyURL)
-                .catch(error => {
-                    console.error('Error fetching ICS file:', error);
-                });
+            const response = await axios.get(proxyURL).catch((error) => {
+                console.error('Error fetching ICS file:', error);
+            });
             const icsData = response.data;
-            console.log(icsData)
+            console.log(icsData);
+
             const jcalData = ical.parse(icsData);
             const comp = new ical.Component(jcalData);
             const events = comp.getAllSubcomponents('vevent');
 
+            // Extract event names and ensure uniqueness
             const eventNames = [...new Set(events.map(event => event.getFirstPropertyValue('summary')))];
-            setEvents(eventNames);
+
+            // Sort event names alphabetically
+            const sortedEventNames = eventNames.sort((a, b) => a.localeCompare(b));
+
+            // Update the state with the sorted event names
+            setEvents(sortedEventNames);
         } catch (error) {
             console.error('Error fetching ICS file:', error);
         }
     };
+
 
     const handleCheckboxChange = (eventName) => {
         setSelectedEvents(prev =>
@@ -46,6 +54,7 @@ function EventFilterPage() {
     };
 
     return (
+        <>
         <div className='createFilter'>
             <h1>Filter ICS Events</h1>
             <input
@@ -79,8 +88,21 @@ function EventFilterPage() {
                     <h3>Filtered ICS Link</h3>
                     <Link to={filterLink} target="_blank" rel="noopener noreferrer"> Link To ICS file </Link>
                 </div>
+
+
             )}
+
+
         </div>
+
+            {filterLink && (
+                <div className='calender'>
+                <CalenderIframe srcUrl={filterLink}></CalenderIframe>
+                </div>
+            )}
+
+        </>
+
     );
 }
 
