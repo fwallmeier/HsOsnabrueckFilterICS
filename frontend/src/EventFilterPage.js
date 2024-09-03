@@ -41,7 +41,7 @@ function EventFilterPage() {
     const handleGenerateFilterLink = () => {
         const jsonPayload = JSON.stringify({ events: selectedEvents });
         const encodedPayload = encodeURIComponent(jsonPayload);
-        const newFilterLink = `/ics?filter=${encodedPayload}&icsUrl=${icsLink}`;
+        const newFilterLink = `https://semesterplan-193309336357.us-central1.run.app/filtered-calendar.ics?filter=${encodedPayload}&icsUrl=${icsLink}`;
         setFilterLink(newFilterLink);
     };
 
