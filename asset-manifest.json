@@ -1,15 +1,13 @@
 {
   "files": {
-    "main.css": "/HsOsnabrueckFilterICS/static/css/main.073bb8d1.css",
-    "main.js": "/HsOsnabrueckFilterICS/static/js/main.79634c4f.js",
-    "static/js/453.70df339d.chunk.js": "/HsOsnabrueckFilterICS/static/js/453.70df339d.chunk.js",
+    "main.css": "/HsOsnabrueckFilterICS/static/css/main.a161292b.css",
+    "main.js": "/HsOsnabrueckFilterICS/static/js/main.7515376b.js",
     "index.html": "/HsOsnabrueckFilterICS/index.html",
-    "main.073bb8d1.css.map": "/HsOsnabrueckFilterICS/static/css/main.073bb8d1.css.map",
-    "main.79634c4f.js.map": "/HsOsnabrueckFilterICS/static/js/main.79634c4f.js.map",
-    "453.70df339d.chunk.js.map": "/HsOsnabrueckFilterICS/static/js/453.70df339d.chunk.js.map"
+    "main.a161292b.css.map": "/HsOsnabrueckFilterICS/static/css/main.a161292b.css.map",
+    "main.7515376b.js.map": "/HsOsnabrueckFilterICS/static/js/main.7515376b.js.map"
   },
   "entrypoints": [
-    "static/css/main.073bb8d1.css",
-    "static/js/main.79634c4f.js"
+    "static/css/main.a161292b.css",
+    "static/js/main.7515376b.js"
   ]
 }
