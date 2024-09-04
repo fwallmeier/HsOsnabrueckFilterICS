@@ -9,6 +9,7 @@ function App() {
         <Routes>
           <Route path="/" element={<WelcomePage />} />
           <Route path="/filter" element={<EventFilterPage />} />
+          <Route path="/*" element={<WelcomePage/>} />
         </Routes>
       </Router>
   );

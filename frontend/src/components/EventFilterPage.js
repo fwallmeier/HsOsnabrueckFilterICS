@@ -25,13 +25,13 @@ function EventFilterPage() {
             const events = comp.getAllSubcomponents('vevent');
 
             // Extract event names and ensure uniqueness
-            const eventNames = [...new Set(events.map(event => event.getFirstPropertyValue('summary')))];
+            const eventNames = [...new Set(events
+                .map(event => event.getFirstPropertyValue('summary')))]
+                .sort((a, b) => a.localeCompare(b));
 
-            // Sort event names alphabetically
-            const sortedEventNames = eventNames.sort((a, b) => a.localeCompare(b));
 
             // Update the state with the sorted event names
-            setEvents(sortedEventNames);
+            setEvents(eventNames);
         } catch (error) {
             console.error('Error fetching ICS file:', error);
         }
