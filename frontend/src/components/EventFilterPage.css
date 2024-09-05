@@ -102,6 +102,13 @@ a:hover {
     text-decoration: underline;
 }
 
+.flex{
+    display: block;
+    align-self: center;
+    text-align: center;
+    align-items: center;
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
     input[type="text"], button {

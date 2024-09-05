@@ -10,6 +10,7 @@ function EventFilterPage() {
     const [events, setEvents] = useState([]);
     const [selectedEvents, setSelectedEvents] = useState([]);
     const [filterLink, setFilterLink] = useState('');
+    const [isCopied, setIsCopied] = useState(false);
 
     const handleLoadICS = async () => {
         try {
@@ -53,6 +54,18 @@ function EventFilterPage() {
         setFilterLink(newFilterLink);
     };
 
+    const handleCopy = () => {
+        navigator.clipboard
+            .writeText(filterLink)
+            .then(() => {
+                setIsCopied(true);
+                setTimeout(() => setIsCopied(false), 2000); // Zeigt kurzzeitig an, dass kopiert wurde
+            })
+            .catch((err) => console.error("Fehler beim Kopieren:", err));
+        console.log("COPY")
+        console.log(filterLink)
+    };
+
     return (
         <>
         <div className='createFilter'>
@@ -84,10 +97,16 @@ function EventFilterPage() {
             <button onClick={handleGenerateFilterLink}>Generate Filter Link</button>
 
             {filterLink && (
-                <div>
+                <div className={"flex"}>
                     <h3>Filtered ICS Link</h3>
-                    <Link to={filterLink} target="_blank" rel="noopener noreferrer"> Link To ICS file </Link>
+                    <Link className={"link"} to={filterLink} target="_blank" rel="noopener noreferrer"> Link To ICS file </Link>
+                    <button onClick={handleCopy} className="absolute top-2 right-6">
+                        {isCopied ? "Copied!" : "Copy Link To ICS File"}
+                    </button>
+                    <p>You can use the Link above to insert the ICS file into your Calender <br/>
+                    </p>
                 </div>
+
 
 
             )}
