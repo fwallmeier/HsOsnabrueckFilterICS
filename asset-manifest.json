@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/HsOsnabrueckFilterICS/static/css/main.a161292b.css",
-    "main.js": "/HsOsnabrueckFilterICS/static/js/main.0183f1bd.js",
+    "main.css": "/HsOsnabrueckFilterICS/static/css/main.342b754d.css",
+    "main.js": "/HsOsnabrueckFilterICS/static/js/main.8fc9096e.js",
     "index.html": "/HsOsnabrueckFilterICS/index.html",
-    "main.a161292b.css.map": "/HsOsnabrueckFilterICS/static/css/main.a161292b.css.map",
-    "main.0183f1bd.js.map": "/HsOsnabrueckFilterICS/static/js/main.0183f1bd.js.map"
+    "main.342b754d.css.map": "/HsOsnabrueckFilterICS/static/css/main.342b754d.css.map",
+    "main.8fc9096e.js.map": "/HsOsnabrueckFilterICS/static/js/main.8fc9096e.js.map"
   },
   "entrypoints": [
-    "static/css/main.a161292b.css",
-    "static/js/main.0183f1bd.js"
+    "static/css/main.342b754d.css",
+    "static/js/main.8fc9096e.js"
   ]
 }
